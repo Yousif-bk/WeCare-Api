@@ -3,7 +3,7 @@ using WeCare_Api.Modals;
 
 namespace WeCare_Api.Dtos
 {
-    public class DoctorDto
+    public class DoctorDto: BaseResponse
     {
         public int Id { get; set; }
         public string FirstName { get; set; } = String.Empty;
