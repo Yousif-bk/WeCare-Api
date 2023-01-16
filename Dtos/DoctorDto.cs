@@ -3,7 +3,7 @@ using WeCare_Api.Modals;
 
 namespace WeCare_Api.Dtos
 {
-    public class DoctorDto: BaseResponse
+    public class DoctorDto
     {
         public int Id { get; set; }
         public string FirstName { get; set; } = String.Empty;
@@ -14,5 +14,9 @@ namespace WeCare_Api.Dtos
         public string WatingTime { get; set; } = String.Empty; 
         public ClinicDto? Clinic { get; set; }
         public ICollection<AppointmentDto> Appointments { get; set; } 
+    }
+    public class DoctorDtoResponse : BaseResponse
+    {
+        public IEnumerable<DoctorDto> Data { get; set; }
     }
 }

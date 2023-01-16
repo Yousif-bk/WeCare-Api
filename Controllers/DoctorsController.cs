@@ -25,7 +25,15 @@ namespace WeCare_Api.Controllers
         {
             var doctor = await _doctorService.GetDoctorsAsync();
             var data = _mapper.Map<IEnumerable<DoctorDto>>(doctor);
-            return Ok(data);
+ 
+            DoctorDtoResponse doctorDtoResponse = new DoctorDtoResponse()
+            {
+                Data = data,
+                IsSuccess = true,
+                StatusCode = 200,
+                ResponseMessage = "Doctors request completed successfully"
+            };
+            return Ok(doctorDtoResponse);
         } 
     }
 }

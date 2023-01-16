@@ -5,7 +5,7 @@
         public bool IsSuccess { get; set; }
         public int StatusCode { get; set; }
         public string ResponseMessage { get; set; }
-        public List<ValidationError> ValidationErrors { get; set; }
+        //public List<ValidationError> ValidationErrors { get; set; }
         public BaseResponse()
         {
 
@@ -21,7 +21,7 @@
             IsSuccess = success;
             StatusCode = statusCode;
             ResponseMessage = responseMessage;
-            ValidationErrors = validationErrors;
+            //ValidationErrors = validationErrors;
         }
     }
 
