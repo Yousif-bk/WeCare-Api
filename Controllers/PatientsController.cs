@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WeCare_Api.Contracts;
 using WeCare_Api.Dtos;
-using WeCare_Api.Modals;
 using WeCare_Api.Services;
 
 namespace WeCare_Api.Controllers
 {
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PatientsController : ControllerBase
     {
         private readonly IPatientService _patientService;

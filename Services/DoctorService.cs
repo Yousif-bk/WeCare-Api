@@ -1,8 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WeCare_Api.Modals;
 
 namespace WeCare_Api.Services
 {
+    
     public class DoctorService : IDoctorService
     {
         private readonly ApplicationDbContext _context;
