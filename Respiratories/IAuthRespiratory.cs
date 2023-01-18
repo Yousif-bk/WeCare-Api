@@ -2,7 +2,7 @@
 
 namespace WeCare_Api.Services
 {
-    public interface IAuthService
+    public interface IAuthRespiratory
     {
         Task<AuthModel> RegisterAsync(RegisterModel model);
         Task<AuthModel> LoginAsync(LoginModel model);

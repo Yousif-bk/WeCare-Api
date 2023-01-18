@@ -14,19 +14,19 @@ namespace WeCare_Api.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class DoctorsController : ControllerBase
     {
-        private readonly IDoctorService _doctorService;
+        private readonly IDoctorRespiratory _doctorRespiratory;
         private readonly IMapper _mapper;
 
-        public DoctorsController(IDoctorService doctorService, IMapper mapper)
+        public DoctorsController(IDoctorRespiratory doctorRespiratory, IMapper mapper)
         {
-            _doctorService = doctorService;
+            _doctorRespiratory = doctorRespiratory;
             _mapper = mapper;
         }
 
         [HttpGet(ApiRoute.Doctor.GetDoctors)]
         public async Task<IActionResult> GetDoctorsAsync()
         {
-            var doctor = await _doctorService.GetDoctorsAsync();
+            var doctor = await _doctorRespiratory.GetDoctorsAsync();
             var data = _mapper.Map<IEnumerable<DoctorDto>>(doctor);
  
             DoctorDtoResponse doctorDtoResponse = new DoctorDtoResponse()

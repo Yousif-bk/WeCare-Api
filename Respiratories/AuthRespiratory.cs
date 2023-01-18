@@ -9,12 +9,12 @@ using WeCare_Api.Modals;
 
 namespace WeCare_Api.Services
 {
-    public class AuthService: IAuthService
+    public class AuthRespiratory: IAuthRespiratory
     {
         private readonly UserManager<ApplicationUsers> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly TokenOption _jwt;
-        public AuthService(UserManager<ApplicationUsers> userManager, RoleManager<IdentityRole> roleManager, IOptions<TokenOption> jwt)
+        public AuthRespiratory(UserManager<ApplicationUsers> userManager, RoleManager<IdentityRole> roleManager, IOptions<TokenOption> jwt)
         {
             _userManager = userManager;
             _roleManager = roleManager;

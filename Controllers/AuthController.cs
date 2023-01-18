@@ -9,11 +9,11 @@ namespace WeCare_Api.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IAuthService _authService;
+        private readonly IAuthRespiratory _authRespiratory;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthRespiratory authRespiratory)
         {
-            _authService = authService;
+            _authRespiratory = authRespiratory;
         }
 
 
@@ -22,7 +22,7 @@ namespace WeCare_Api.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var result = await _authService.RegisterAsync(registerModel);
+            var result = await _authRespiratory.RegisterAsync(registerModel);
             if (!result.IsAuthenticated)
                 return BadRequest(result.Message);
             return Ok(result);
@@ -34,7 +34,7 @@ namespace WeCare_Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var result = await _authService.LoginAsync(model);
+            var result = await _authRespiratory.LoginAsync(model);
 
             if (!result.IsAuthenticated)
                 return BadRequest(result.Message);

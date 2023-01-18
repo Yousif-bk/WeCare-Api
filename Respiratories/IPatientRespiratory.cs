@@ -2,7 +2,7 @@
 
 namespace WeCare_Api.Services
 {
-    public interface IPatientService
+    public interface IPatientRespiratory
     {
         Task<IEnumerable<Patient>> GetPatientsAsync();
     }

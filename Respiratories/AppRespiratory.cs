@@ -3,11 +3,11 @@ using WeCare_Api.Modals;
 
 namespace WeCare_Api.Services
 {
-    public class AppService : IAppService
+    public class AppRespiratory : IAppRespiratory
     {
         private readonly ApplicationDbContext _context;
 
-        public AppService(ApplicationDbContext context)
+        public AppRespiratory(ApplicationDbContext context)
         {
             _context = context;
         }

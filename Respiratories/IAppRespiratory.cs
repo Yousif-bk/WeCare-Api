@@ -2,7 +2,7 @@
 
 namespace WeCare_Api.Services
 {
-    public interface IAppService
+    public interface IAppRespiratory
     {
         Task<IEnumerable<Appointment>> GetAppointmentAsync();
         Task<IEnumerable<Area>> GetAreaAsync();

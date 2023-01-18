@@ -12,19 +12,19 @@ namespace WeCare_Api.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PatientsController : ControllerBase
     {
-        private readonly IPatientService _patientService;
+        private readonly IPatientRespiratory _patientRespiratory;
         private readonly IMapper _mapper;
 
-        public PatientsController(IPatientService patientService, IMapper mapper)
+        public PatientsController(IPatientRespiratory patientRespiratory, IMapper mapper)
         {
-            _patientService = patientService;
+            _patientRespiratory = patientRespiratory;
             _mapper = mapper;
         }
 
         [HttpGet(ApiRoute.Patient.GetPatients)]
         public async Task<IActionResult> GetPatientAsync()
         {
-            var patient = await _patientService.GetPatientsAsync();
+            var patient = await _patientRespiratory.GetPatientsAsync();
             var data =  _mapper.Map<IEnumerable<PatientDto>>(patient);
             return Ok(data);
 

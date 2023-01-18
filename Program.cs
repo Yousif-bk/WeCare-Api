@@ -22,10 +22,10 @@ options.UseSqlServer(connectionString));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddTransient<IAppService, AppService>();
-builder.Services.AddTransient<IDoctorService, DoctorService>();
-builder.Services.AddTransient<IPatientService, PatientService>();
+builder.Services.AddScoped<IAuthRespiratory, AuthRespiratory>();
+builder.Services.AddTransient<IAppRespiratory, AppRespiratory>();
+builder.Services.AddTransient<IDoctorRespiratory, DoctorRespiratory>();
+builder.Services.AddTransient<IPatientRespiratory, PatientRespiratory>();
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddControllersWithViews()

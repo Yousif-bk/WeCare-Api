@@ -7,11 +7,11 @@ using WeCare_Api.Modals;
 namespace WeCare_Api.Services
 {
     
-    public class DoctorService : IDoctorService
+    public class DoctorRespiratory : IDoctorRespiratory
     {
         private readonly ApplicationDbContext _context;
 
-        public DoctorService(ApplicationDbContext context)
+        public DoctorRespiratory(ApplicationDbContext context)
         {
             _context = context;
         }
