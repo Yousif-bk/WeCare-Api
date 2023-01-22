@@ -5,12 +5,12 @@
         public bool IsSuccess { get; set; }
         public int StatusCode { get; set; }
         public string ResponseMessage { get; set; }
-        //public List<ValidationError> ValidationErrors { get; set; }
+        public List<ValidationError> ValidationErrors { get; set; }
         public BaseResponse()
         {
 
         }
-        public BaseResponse(bool success, int statusCode, string responseMessage, int totalRecord)
+        public BaseResponse(bool success, int statusCode, string responseMessage)
         {
             IsSuccess = success;
             StatusCode = statusCode;
@@ -21,11 +21,11 @@
             IsSuccess = success;
             StatusCode = statusCode;
             ResponseMessage = responseMessage;
-            //ValidationErrors = validationErrors;
+            ValidationErrors = validationErrors;
         }
     }
 
-    public class ValidationError
+    public class ValidationError 
     {
         public string Name { get; set; }
         public string Description { get; set; }

@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PagedList;
+using WeCare_Api.Dtos;
 using WeCare_Api.Modals;
 
 namespace WeCare_Api.Services
@@ -16,13 +18,28 @@ namespace WeCare_Api.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Doctor>> GetDoctorsAsync()
+        public async Task<IEnumerable<Doctor>> GetDoctorsAsync(DoctorSerarchDto doctorSerarchDto)
         {
-            return await _context.Doctors
+            var doctors = _context.Doctors
                 .Include(d => d.Clinic)
                 .Include(d => d.Clinic.Area)
-                .Include(d => d.Appointments)
-                .ToListAsync();
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(doctorSerarchDto.DoctoreName))
+            {
+                doctors = doctors.Where(d => d.FullName.Contains(doctorSerarchDto.DoctoreName));
+            }
+            if (!string.IsNullOrEmpty(doctorSerarchDto.ClinicName))
+            {
+                doctors = doctors.Where(d => d.Clinic.Name.Contains(doctorSerarchDto.ClinicName));
+            }
+            if (!string.IsNullOrEmpty(doctorSerarchDto.Area))
+            {
+                doctors = doctors.Where(d => d.Clinic.Area.Name.Contains(doctorSerarchDto.Area));
+            }
+            var totalCount = doctors.Count();
+            var results = doctors.ToPagedList(doctorSerarchDto.PageNumber, doctorSerarchDto.PageSize);
+            return (results);
         }
     }
 }

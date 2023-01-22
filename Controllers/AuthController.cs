@@ -24,7 +24,7 @@ namespace WeCare_Api.Controllers
                 return BadRequest(ModelState);
             var result = await _authRespiratory.RegisterAsync(registerModel);
             if (!result.IsAuthenticated)
-                return BadRequest(result.Message);
+                return BadRequest(new BaseResponse(false, 400, result.Message));
             return Ok(result);
         }
 
@@ -37,7 +37,7 @@ namespace WeCare_Api.Controllers
             var result = await _authRespiratory.LoginAsync(model);
 
             if (!result.IsAuthenticated)
-                return BadRequest(result.Message);
+                return BadRequest(new BaseResponse(false, 400, result.Message));
 
             return Ok(result);
         }

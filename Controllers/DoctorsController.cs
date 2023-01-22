@@ -23,10 +23,10 @@ namespace WeCare_Api.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet(ApiRoute.Doctor.GetDoctors)]
-        public async Task<IActionResult> GetDoctorsAsync()
+        [HttpPost(ApiRoute.Doctor.GetDoctors)]
+        public async Task<IActionResult> GetDoctorsAsync(DoctorSerarchDto doctorSerarchDto)
         {
-            var doctor = await _doctorRespiratory.GetDoctorsAsync();
+            var doctor = await _doctorRespiratory.GetDoctorsAsync(doctorSerarchDto);
             var data = _mapper.Map<IEnumerable<DoctorDto>>(doctor);
  
             DoctorDtoResponse doctorDtoResponse = new DoctorDtoResponse()

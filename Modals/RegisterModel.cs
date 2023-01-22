@@ -5,6 +5,7 @@ namespace WeCare_Api.Modals
     public class RegisterModel
     {
         [StringLength(100)]
+        [Required]
         public string FirstName { get; set; }
         [StringLength(100)]
         public string LastName { get; set; }

@@ -28,8 +28,7 @@ namespace WeCare_Api.Services
 
             if (user is null || !await _userManager.CheckPasswordAsync(user, model.Password))
             {
-                authModel.Message = "Email or Password is incorrect!";
-                return authModel;
+                return new AuthModel { Message = "Email or Password is incorrect!" }; ;
             }
 
             var jwtSecurityToken = await CreateJwtToken(user);
